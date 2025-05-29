@@ -1,48 +1,91 @@
-﻿namespace STUDY.mathgame
+﻿
+      
+string? readResult;
+string menuSelect = "";
+Random numberGenerator = new Random();
+
+MainMenu();
+
+void MainMenu()
 {
-    internal class Program
+    do
     {
-        static void Main(string[] args)
+        Console.WriteLine("MATH MINI GAME !!");
+        Console.WriteLine("CHOOOOOOSEEEE AN OPERATON:");
+        Console.WriteLine("M. MULTIPLICATION");
+        Console.WriteLine("D. DIVISION");
+        Console.WriteLine("A. ADDITION");
+        Console.WriteLine("S. SUBTRACTION");
+        Console.WriteLine("Q. QUIT");
+
+        readResult = Console.ReadLine();
+
+        if (readResult != null)
         {
-            string? readResult;
-            string menuSelect = "";
+            menuSelect = readResult.ToLower().Trim();
+        }
 
-            do
-            {
-                Console.WriteLine("MATH MINI GAME !!");
-                Console.WriteLine("CHOOOOOOSEEEE AN OPERATON:");
-                Console.WriteLine("1. MULTIPLICATION");
-                Console.WriteLine("2. DIVISION");
-                Console.WriteLine("3. ADDITION");
-                Console.WriteLine("4. SUBTRACTION");
+        switch (menuSelect)
+        {
+            case "m":
+                MultiplicationGame();
+                break;
+            case "d":
+                DivisionGame();
+                break;
+            case "a":
+                AdditionGame("ADDITION !! GAME,,,,, START !!");
+                break;
+            case "s":
+                SubtractionGame();
+                break;
+            default:
 
-                readResult = Console.ReadLine();
-
-                if (readResult != null)
-                {
-                    menuSelect = readResult.ToLower();
-                }
-
-                switch(menuSelect)
-                {
-                    case "1":
-
-                        break;
-                    case "2":
-
-                        break;
-                    case "3":
-
-                        break;
-                    case "4":
-
-                        break;
-                    default:
-
-                        break;
-                }
-            }
-            while (menuSelect != "exit");
+                Console.WriteLine("INVALID !!");
+                break;
         }
     }
+    while (menuSelect != "q");
+}
+
+
+void MultiplicationGame()
+{
+    
+}
+
+
+void DivisionGame()
+{
+    
+}
+
+
+void SubtractionGame()
+{
+    
+}
+
+
+void AdditionGame(string message)
+{
+    Console.WriteLine($"{message}");
+
+    int firstNumber = numberGenerator.Next(1, 99);
+    int secondNumber = numberGenerator.Next(1, 99);
+    int correctAnswer = firstNumber + secondNumber;
+
+    Console.WriteLine($@"ANSWER THIS: {firstNumber} + {secondNumber} = ");
+
+    var response = Console.ReadLine();
+
+    if(int.Parse(response) == correctAnswer)
+    {
+        Console.WriteLine($"CORRECT !! {response} IS CORRECT");
+    }
+    else if (int.Parse(response) != correctAnswer) 
+    {
+        Console.WriteLine($"WRONG !! {response} IS NOT CORRECT");
+    }
+
 }
