@@ -1,5 +1,5 @@
 ﻿
-      
+int maxGames = 5;
 string? readResult;
 string menuSelect = "";
 Random numberGenerator = new Random();
@@ -71,21 +71,25 @@ void AdditionGame(string message)
 {
     Console.WriteLine($"{message}");
 
-    int firstNumber = numberGenerator.Next(1, 99);
-    int secondNumber = numberGenerator.Next(1, 99);
-    int correctAnswer = firstNumber + secondNumber;
-
-    Console.WriteLine($@"ANSWER THIS: {firstNumber} + {secondNumber} = ");
-
-    var response = Console.ReadLine();
-
-    if(int.Parse(response) == correctAnswer)
+    for (int i = 0; i < maxGames; i++)
     {
-        Console.WriteLine($"CORRECT !! {response} IS CORRECT");
+        int firstNumber = numberGenerator.Next(1, 99);
+        int secondNumber = numberGenerator.Next(1, 99);
+        int correctAnswer = firstNumber + secondNumber;
+
+        Console.WriteLine($@"ANSWER THIS: {firstNumber} + {secondNumber} = ");
+
+        var response = Console.ReadLine();
+
+        if (int.Parse(response) == correctAnswer)
+        {
+            Console.WriteLine($"CORRECT !! {response} IS CORRECT");
+        }
+        else if (int.Parse(response) != correctAnswer)
+        {
+            Console.WriteLine($"WRONG !! {response} IS NOT CORRECT");
+        }
     }
-    else if (int.Parse(response) != correctAnswer) 
-    {
-        Console.WriteLine($"WRONG !! {response} IS NOT CORRECT");
-    }
+        
 
 }
