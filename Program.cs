@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 //Global Variables
 int maxGames = 0;
 int numberRange = 0;
 string? readResult;
 string menuSelect = "";
-bool validEntry = false;
+double timeTaken = 0;
+bool validEntry = false;   
 int playerAnswer = 0;
 var response = "";
 List<string> gameRecords = new List<string>(); 
 Random numberGenerator = new Random();
+Stopwatch stopwatch = new Stopwatch();
 
 MainMenu();     
 
@@ -81,6 +84,10 @@ void MultiplicationGame(string message)
 
     Console.WriteLine($"{message}");
 
+    bool gameStart = true;
+
+    GameStopWatch(gameStart, stopwatch);
+
     for (int i = 0; i < maxGames; i++)
     {
         int firstNumber = numberGenerator.Next(1, numberRange);
@@ -124,8 +131,8 @@ void MultiplicationGame(string message)
 
     }
 
-    gameRecords.Add($"DATE: {DateTime.Now}\t\tMODE: MULTIPLICATION\t\tSCORE: {correctAnswers}");
-    Console.WriteLine($"YOU ANSWERED {correctAnswers} out of {maxGames}\nPRESS ANY BUTTON TO CONTINUE");
+    gameRecords.Add($"DATE: {DateTime.Now}\t\tMODE: MULTIPLICATION\t\tSCORE: {correctAnswers}\t\tTIME: {timeTaken:F2}");
+    Console.WriteLine($"YOU ANSWERED {correctAnswers} out of {maxGames} in {timeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
     Console.ReadLine();
     Console.Clear();    
 }
@@ -394,5 +401,21 @@ int[] DivisionGameNumberGenerator()
     return result;
 }
 
+double GameStopWatch(bool gameStarts, Stopwatch stopwatch)
+{
+    if (gameStarts)
+    {
+        stopwatch.Start();
+    } else
+    {
+        stopwatch.Stop();
+    }
+
+    timeTaken = stopwatch.Elapsed.TotalSeconds;
+
+    return timeTaken;
+
+
+}
 
 
