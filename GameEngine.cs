@@ -1,4 +1,6 @@
 ﻿
+using STUDY.mathgame.MODELS;
+
 namespace STUDY.mathgame
 {
     internal class GameEngine
@@ -52,7 +54,7 @@ namespace STUDY.mathgame
 
             Helpers.GameStopWatch(false);
 
-            Helpers.AddToHistory(Globals.correctAnswers, "MULTIPLICATION");
+            Helpers.AddToHistory(Globals.correctAnswers, GameType.Multiplication);
             Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
             Console.ReadLine();
             Console.Clear();
@@ -106,7 +108,7 @@ namespace STUDY.mathgame
 
             Helpers.GameStopWatch(false);
 
-            Helpers.AddToHistory(Globals.correctAnswers, "DIVISION");
+            Helpers.AddToHistory(Globals.correctAnswers, GameType.Division);
             Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
             Console.ReadLine();
             Console.Clear();
@@ -160,7 +162,7 @@ namespace STUDY.mathgame
 
             Helpers.GameStopWatch(false);
 
-            Helpers.AddToHistory(Globals.correctAnswers, "ADDITION");
+            Helpers.AddToHistory(Globals.correctAnswers, GameType.Addition);
             Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
             Console.ReadLine();
             Console.Clear();
@@ -213,7 +215,7 @@ namespace STUDY.mathgame
 
             Helpers.GameStopWatch(false);
 
-            Helpers.AddToHistory(Globals.correctAnswers, "SUBTRACTION");
+            Helpers.AddToHistory(Globals.correctAnswers, GameType.Subtraction);
             Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
             Console.ReadLine();
             Console.Clear();

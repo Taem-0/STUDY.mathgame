@@ -7,7 +7,15 @@ internal class Game
 
     public int Score { get; set; }
 
-    public string Type { get; set; }    
+    public GameType Type { get; set; }    
 
     public double Time { get; set; }
+}
+
+internal enum GameType
+{
+    MULTIPLICATION,
+    DIVISION,
+    ADDITION,
+    SUBTRACTION
 }

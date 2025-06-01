@@ -93,7 +93,7 @@ namespace STUDY.mathgame
             Console.Clear();
         }
 
-        internal static void AddToHistory(int gameScore, string gameType)
+        internal static void AddToHistory(int gameScore, GameType gameType)
         {
             //Globals.GameRecords.Add($"DATE: {DateTime.Now}\t\tMODE: {gameType}\t\tSCORE: {gameScore}\t\tTIME: {Globals.TimeTaken:F2}");
 
