@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using STUDY.mathgame.MODELS;
 
 public static class Globals
 {
@@ -10,7 +11,8 @@ public static class Globals
     public static int PlayerAnswer = 0;
     public static string Response = "";
     public static bool GameStart = true;
-    public static List<string> GameRecords = new List<string>();
+    internal static List<Game> GameRecords = new List<Game>();
     public static Random NumberGenerator = new Random();
     public static Stopwatch Stopwatch = new Stopwatch();
+    public static int correctAnswers = 0;
 }

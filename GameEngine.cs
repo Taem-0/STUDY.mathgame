@@ -8,8 +8,6 @@ namespace STUDY.mathgame
         {
             Helpers.gameDifficulty();
 
-            int correctAnswers = 0;
-
             Console.WriteLine($"{message}");
 
             Helpers.GameStopWatch(true);
@@ -35,7 +33,7 @@ namespace STUDY.mathgame
                         if (Globals.PlayerAnswer == firstNumber * secondNumber)
                         {
                             Console.WriteLine($"CORRECT !! {Globals.Response} IS CORRECT");
-                            correctAnswers++;
+                            Globals.correctAnswers++;
                             Console.WriteLine();
                         }
                         else
@@ -54,8 +52,8 @@ namespace STUDY.mathgame
 
             Helpers.GameStopWatch(false);
 
-            Globals.GameRecords.Add($"DATE: {DateTime.Now}\t\tMODE: MULTIPLICATION\t\tSCORE: {correctAnswers}\t\tTIME: {Globals.TimeTaken:F2}");
-            Console.WriteLine($"YOU ANSWERED {correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
+            Helpers.AddToHistory(Globals.correctAnswers, "MULTIPLICATION");
+            Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
             Console.ReadLine();
             Console.Clear();
         }
@@ -63,7 +61,6 @@ namespace STUDY.mathgame
         internal void DivisionGame(string message)
         {
             Helpers.gameDifficulty();
-            int correctAnswers = 0;
 
             Console.WriteLine($"{message}");
             Helpers.GameStopWatch(true);
@@ -90,7 +87,7 @@ namespace STUDY.mathgame
                         if (Globals.PlayerAnswer == firstNumber / secondNumber)
                         {
                             Console.WriteLine($"CORRECT !! {Globals.Response} IS CORRECT");
-                            correctAnswers++;
+                            Globals.correctAnswers++;
                             Console.WriteLine();
                         }
                         else
@@ -109,8 +106,8 @@ namespace STUDY.mathgame
 
             Helpers.GameStopWatch(false);
 
-            Globals.GameRecords.Add($"DATE: {DateTime.Now}\t\tMODE: DIVISION\t\tSCORE: {correctAnswers}\t\tTIME: {Globals.TimeTaken:F2}");
-            Console.WriteLine($"YOU ANSWERED {correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
+            Helpers.AddToHistory(Globals.correctAnswers, "DIVISION");
+            Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
             Console.ReadLine();
             Console.Clear();
         }
@@ -118,7 +115,7 @@ namespace STUDY.mathgame
         internal void AdditionGame(string message)
         {
             Helpers.gameDifficulty();
-            int correctAnswers = 0;
+            
 
             Console.WriteLine($"{message}");
             Helpers.GameStopWatch(true);
@@ -144,7 +141,7 @@ namespace STUDY.mathgame
                         if (Globals.PlayerAnswer == firstNumber + secondNumber)
                         {
                             Console.WriteLine($"CORRECT !! {Globals.Response} IS CORRECT");
-                            correctAnswers++;
+                            Globals.correctAnswers++;
                             Console.WriteLine();
                         }
                         else
@@ -163,8 +160,8 @@ namespace STUDY.mathgame
 
             Helpers.GameStopWatch(false);
 
-            Globals.GameRecords.Add($"DATE: {DateTime.Now}\t\tMODE: ADDITION\t\tSCORE: {correctAnswers}\t\tTIME: {Globals.TimeTaken:F2}");
-            Console.WriteLine($"YOU ANSWERED {correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
+            Helpers.AddToHistory(Globals.correctAnswers, "ADDITION");
+            Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
             Console.ReadLine();
             Console.Clear();
         }
@@ -172,7 +169,6 @@ namespace STUDY.mathgame
         internal void SubtractionGame(string message)
         {
             Helpers.gameDifficulty();
-            int correctAnswers = 0;
 
             Console.WriteLine($"{message}");
             Helpers.GameStopWatch(true);
@@ -198,7 +194,7 @@ namespace STUDY.mathgame
                         if (Globals.PlayerAnswer == firstNumber - secondNumber)
                         {
                             Console.WriteLine($"CORRECT !! {Globals.Response} IS CORRECT");
-                            correctAnswers++;
+                            Globals.correctAnswers++;
                             Console.WriteLine();
                         }
                         else
@@ -217,8 +213,8 @@ namespace STUDY.mathgame
 
             Helpers.GameStopWatch(false);
 
-            Globals.GameRecords.Add($"DATE: {DateTime.Now}\t\tMODE: SUBTRACTION\t\tSCORE: {correctAnswers}\t\tTIME: {Globals.TimeTaken:F2}");
-            Console.WriteLine($"YOU ANSWERED {correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
+            Helpers.AddToHistory(Globals.correctAnswers, "SUBTRACTION");
+            Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
             Console.ReadLine();
             Console.Clear();
         }

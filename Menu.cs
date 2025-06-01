@@ -48,15 +48,8 @@ namespace STUDY.mathgame
                         gameEngine.SubtractionGame("SUBTRACTION !! GAME,,,,, START !!");
                         break;
                     case "h":
-                        Console.WriteLine("LOOK INTO THEEE,,,,, CRYSTAL BALL OF RECORDS !!");
+                        Helpers.DisplayGames();
 
-                        foreach (string games in Globals.GameRecords)
-                        {
-                            Console.WriteLine($"{games}\n");
-                        }
-
-                        Console.ReadLine();
-                        Console.Clear();
                         break;
 
                     default:

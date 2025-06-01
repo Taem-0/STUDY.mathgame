@@ -1,4 +1,6 @@
 ﻿
+using STUDY.mathgame.MODELS;
+
 namespace STUDY.mathgame
 {
     internal class Helpers
@@ -76,6 +78,33 @@ namespace STUDY.mathgame
                 Globals.TimeTaken = Globals.Stopwatch.Elapsed.TotalSeconds;
             }
         }
+
+        internal static void DisplayGames()
+        {
+            Console.WriteLine("LOOK INTO THEEE,,,,, CRYSTAL BALL OF RECORDS !!");
+
+            foreach (Game game in Globals.GameRecords)
+            {
+                Console.WriteLine($"DATE: {game.Date}\t\tMODE: {game.Type}\t\tSCORE: {game.Score}\t\tTIME: {game.Time:F2}\n");
+            }
+
+
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        internal static void AddToHistory(int gameScore, string gameType)
+        {
+            //Globals.GameRecords.Add($"DATE: {DateTime.Now}\t\tMODE: {gameType}\t\tSCORE: {gameScore}\t\tTIME: {Globals.TimeTaken:F2}");
+
+            Globals.GameRecords.Add(new Game
+            {
+                Date = DateTime.Now,
+                Score = gameScore,
+                Type = gameType,
+                Time = Globals.TimeTaken
+            });
+        }    
 
     }
 }
