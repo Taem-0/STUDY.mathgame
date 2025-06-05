@@ -36,22 +36,23 @@ namespace STUDY.mathgame
                 switch (menuSelect)
                 {
                     case "m":
-                        gameEngine.MultiplicationGame("MULTIPLICATION !! GAME,,,,, START !!");
+                        //gameEngine.MultiplicationGame("MULTIPLICATION !! GAME,,,,, START !!");
+                        gameEngine.MathGame("MULTIPLICATION !! GAME,,,,, START !!", GameEngine.MathOperation.Multiplication, MODELS.GameType.Multiplication);
                         break;
                     case "d":
-                        gameEngine.DivisionGame("DIVISION !! GAME,,,,, START !!");
+                        gameEngine.MathGame("DIVISION !! GAME,,,,, START !!", GameEngine.MathOperation.Division, MODELS.GameType.Division);
                         break;
                     case "a":
-                        gameEngine.AdditionGame("ADDITION !! GAME,,,,, START !!");
+                        gameEngine.MathGame("ADDITION !! GAME,,,,, START !!", GameEngine.MathOperation.Addition, MODELS.GameType.Addition);
                         break;
                     case "s":
-                        gameEngine.SubtractionGame("SUBTRACTION !! GAME,,,,, START !!");
+                        gameEngine.MathGame("SUBTRACTION !! GAME,,,,, START !!", GameEngine.MathOperation.Subtraction, MODELS.GameType.Subtraction);
                         break;
                     case "h":
                         Helpers.DisplayGames();
-
+                        break;  
+                    case "q":
                         break;
-
                     default:
                         Console.WriteLine("INVALID !!");
                         break;

@@ -52,16 +52,27 @@ namespace STUDY.mathgame
             }
         }
 
-        internal static int[] DivisionGameNumberGenerator()
+        internal static int[] GameNumberGenerator(GameType gameType)
         {
             int firstNumber, secondNumber;
 
-            do
+            if (gameType == GameType.Division)
+            {
+
+                do
+                {
+                    firstNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
+                    secondNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
+                }
+
+                while (firstNumber % secondNumber != 0);
+
+            }
+            else
             {
                 firstNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
                 secondNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
             }
-            while (firstNumber % secondNumber != 0);
 
             return new int[] { firstNumber, secondNumber };
         }
