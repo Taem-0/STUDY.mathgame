@@ -14,5 +14,5 @@ public static class Globals
     internal static List<Game> GameRecords = new List<Game>();
     public static Random NumberGenerator = new Random();
     public static Stopwatch Stopwatch = new Stopwatch();
-    public static int correctAnswers = 0;
+    public static int correctAnswers;
 }

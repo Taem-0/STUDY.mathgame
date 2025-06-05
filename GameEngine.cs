@@ -15,6 +15,9 @@ namespace STUDY.mathgame
         internal void MathGame(string message, MathOperation operation, MODELS.GameType gameType)
         {
             string operatorSymbol = "";
+            GameType historyGameType = new GameType();
+
+            Globals.correctAnswers = 0;
 
             Helpers.gameDifficulty();
             Console.WriteLine(message);
@@ -27,20 +30,29 @@ namespace STUDY.mathgame
                 var numbers = Helpers.GameNumberGenerator(gameType);
                 int firstNumber = numbers[0];
                 int secondNumber = numbers[1];
+                int correctAnswer = 0;
 
                 switch (operation)
                 { 
                     case MathOperation.Multiplication:
                         operatorSymbol = "x";
+                        historyGameType = GameType.Multiplication;
+                        correctAnswer = firstNumber * secondNumber;
                         break;
                     case MathOperation.Division:
                         operatorSymbol = "/";
+                        historyGameType = GameType.Division;
+                        correctAnswer = firstNumber / secondNumber;
                         break;
                     case MathOperation.Addition:
                         operatorSymbol = "+";
+                        historyGameType = GameType.Addition;
+                        correctAnswer = firstNumber + secondNumber;
                         break;
                     case MathOperation.Subtraction:
                         operatorSymbol = "-";
+                        historyGameType = GameType.Subtraction;
+                        correctAnswer = firstNumber - secondNumber;
                         break;
                     default:
                         Console.WriteLine("INVALID OPERATION");
@@ -60,7 +72,7 @@ namespace STUDY.mathgame
 
                     if (Globals.ValidEntry)
                     {
-                        if (Globals.PlayerAnswer == firstNumber * secondNumber)
+                        if (Globals.PlayerAnswer == correctAnswer)
                         {
                             Console.WriteLine($"CORRECT !! {Globals.Response} IS CORRECT");
                             Globals.correctAnswers++;
@@ -82,15 +94,6 @@ namespace STUDY.mathgame
             }
 
             Helpers.GameStopWatch(false);
-
-            GameType historyGameType = operation switch
-            {
-                MathOperation.Addition => GameType.Addition,
-                MathOperation.Subtraction => GameType.Subtraction,
-                MathOperation.Multiplication => GameType.Multiplication,
-                MathOperation.Division => GameType.Division,
-                _ => throw new ArgumentException("Invalid operation")
-            };
 
             Helpers.AddToHistory(Globals.correctAnswers, historyGameType);
             Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
