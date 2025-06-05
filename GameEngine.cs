@@ -12,48 +12,60 @@ namespace STUDY.mathgame
             Division
         }
 
-        internal void MathGame(string message, MathOperation operation, MODELS.GameType gameType)
+        internal void MathGame(string message, MODELS.GameType gameType)
         {
             string operatorSymbol = "";
-            GameType historyGameType = new GameType();
-
+            GameType currentGameType = new GameType();
             Globals.correctAnswers = 0;
+            Random randomGame = new Random();
 
             Helpers.gameDifficulty();
             Console.WriteLine(message);
 
-            Helpers.GameStopWatch(true);    
+            Helpers.GameStopWatch(true);
 
             for (int i = 0; i < Globals.MaxGames; i++)
             {
+
+                if (gameType == GameType.Random)
+                {
+                    int randomOperation = randomGame.Next(0, 4);
+                    currentGameType = (GameType)randomOperation;
+                    
+                }
+                else
+                {
+                    currentGameType = gameType;
+                }
 
                 var numbers = Helpers.GameNumberGenerator(gameType);
                 int firstNumber = numbers[0];
                 int secondNumber = numbers[1];
                 int correctAnswer = 0;
 
-                switch (operation)
-                { 
-                    case MathOperation.Multiplication:
+                switch (currentGameType)
+                {
+                    case GameType.Multiplication:
                         operatorSymbol = "x";
-                        historyGameType = GameType.Multiplication;
+                        currentGameType = GameType.Multiplication;
                         correctAnswer = firstNumber * secondNumber;
                         break;
-                    case MathOperation.Division:
+                    case GameType.Division:
                         operatorSymbol = "/";
-                        historyGameType = GameType.Division;
+                        currentGameType = GameType.Division;
                         correctAnswer = firstNumber / secondNumber;
                         break;
-                    case MathOperation.Addition:
+                    case GameType.Addition:
                         operatorSymbol = "+";
-                        historyGameType = GameType.Addition;
+                        currentGameType = GameType.Addition;
                         correctAnswer = firstNumber + secondNumber;
                         break;
-                    case MathOperation.Subtraction:
+                    case GameType.Subtraction:
                         operatorSymbol = "-";
-                        historyGameType = GameType.Subtraction;
+                        currentGameType = GameType.Subtraction;
                         correctAnswer = firstNumber - secondNumber;
                         break;
+
                     default:
                         Console.WriteLine("INVALID OPERATION");
                         break;
@@ -95,231 +107,12 @@ namespace STUDY.mathgame
 
             Helpers.GameStopWatch(false);
 
-            Helpers.AddToHistory(Globals.correctAnswers, historyGameType);
+            Helpers.AddToHistory(Globals.correctAnswers, gameType);
             Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
             Console.ReadLine();
             Console.Clear();
 
         }
-
-        /*
-        internal void MultiplicationGame(string message)
-        {
-            Helpers.gameDifficulty();
-
-            Console.WriteLine($"{message}");
-
-            Helpers.GameStopWatch(true);
-
-            for (int i = 0; i < Globals.MaxGames; i++)
-            {
-                int firstNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
-                int secondNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
-
-                do
-                {
-                    Console.WriteLine($@"ANSWER THIS: {firstNumber} x {secondNumber} = ");
-
-                    Globals.ReadResult = Console.ReadLine();
-                    if (Globals.ReadResult != null)
-                    {
-                        Globals.Response = Globals.ReadResult.ToLower().Trim();
-                        Globals.ValidEntry = int.TryParse(Globals.Response, out Globals.PlayerAnswer);
-                    }
-
-                    if (Globals.ValidEntry)
-                    {
-                        if (Globals.PlayerAnswer == firstNumber * secondNumber)
-                        {
-                            Console.WriteLine($"CORRECT !! {Globals.Response} IS CORRECT");
-                            Globals.correctAnswers++;
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine($"WRONG !! {Globals.Response} IS NOT CORRECT");
-                            Console.WriteLine();
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("INPUT A NUMBER !!");
-                    }
-
-                } while (!Globals.ValidEntry);
-            }
-
-            Helpers.GameStopWatch(false);
-
-            Helpers.AddToHistory(Globals.correctAnswers, GameType.Multiplication);
-            Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
-            Console.ReadLine();
-            Console.Clear();
-        }
-        */
-
-        /*
-        internal void DivisionGame(string message)
-        {
-            Helpers.gameDifficulty();
-
-            Console.WriteLine($"{message}");
-            Helpers.GameStopWatch(true);
-
-            for (int i = 0; i < Globals.MaxGames; i++)
-            {
-                var divisionNumbers = Helpers.DivisionGameNumberGenerator();
-                int firstNumber = divisionNumbers[0];
-                int secondNumber = divisionNumbers[1];
-
-                do
-                {
-                    Console.WriteLine($@"ANSWER THIS: {firstNumber} / {secondNumber} = ");
-
-                    Globals.ReadResult = Console.ReadLine();
-                    if (Globals.ReadResult != null)
-                    {
-                        Globals.Response = Globals.ReadResult.ToLower().Trim();
-                        Globals.ValidEntry = int.TryParse(Globals.Response, out Globals.PlayerAnswer);
-                    }
-
-                    if (Globals.ValidEntry)
-                    {
-                        if (Globals.PlayerAnswer == firstNumber / secondNumber)
-                        {
-                            Console.WriteLine($"CORRECT !! {Globals.Response} IS CORRECT");
-                            Globals.correctAnswers++;
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine($"WRONG !! {Globals.Response} IS NOT CORRECT");
-                            Console.WriteLine();
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("INPUT A NUMBER !!");
-                    }
-
-                } while (!Globals.ValidEntry);
-            }
-
-            Helpers.GameStopWatch(false);
-
-            Helpers.AddToHistory(Globals.correctAnswers, GameType.Division);
-            Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        internal void AdditionGame(string message)
-        {
-            Helpers.gameDifficulty();
-            
-
-            Console.WriteLine($"{message}");
-            Helpers.GameStopWatch(true);
-
-            for (int i = 0; i < Globals.MaxGames; i++)
-            {
-                int firstNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
-                int secondNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
-
-                do
-                {
-                    Console.WriteLine($@"ANSWER THIS: {firstNumber} + {secondNumber} = ");
-
-                    Globals.ReadResult = Console.ReadLine();
-                    if (Globals.ReadResult != null)
-                    {
-                        Globals.Response = Globals.ReadResult.ToLower().Trim();
-                        Globals.ValidEntry = int.TryParse(Globals.Response, out Globals.PlayerAnswer);
-                    }
-
-                    if (Globals.ValidEntry)
-                    {
-                        if (Globals.PlayerAnswer == firstNumber + secondNumber)
-                        {
-                            Console.WriteLine($"CORRECT !! {Globals.Response} IS CORRECT");
-                            Globals.correctAnswers++;
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine($"WRONG !! {Globals.Response} IS NOT CORRECT");
-                            Console.WriteLine();
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("INPUT A NUMBER !!");
-                    }
-
-                } while (!Globals.ValidEntry);
-            }
-
-            Helpers.GameStopWatch(false);
-
-            Helpers.AddToHistory(Globals.correctAnswers, GameType.Addition);
-            Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        internal void SubtractionGame(string message)
-        {
-            Helpers.gameDifficulty();
-
-            Console.WriteLine($"{message}");
-            Helpers.GameStopWatch(true);
-
-            for (int i = 0; i < Globals.MaxGames; i++)
-            {
-                int firstNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
-                int secondNumber = Globals.NumberGenerator.Next(1, Globals.NumberRange);
-
-                do
-                {
-                    Console.WriteLine($@"ANSWER THIS: {firstNumber} - {secondNumber} = ");
-
-                    Globals.ReadResult = Console.ReadLine();
-                    if (Globals.ReadResult != null)
-                    {
-                        Globals.Response = Globals.ReadResult.ToLower().Trim();
-                        Globals.ValidEntry = int.TryParse(Globals.Response, out Globals.PlayerAnswer);
-                    }
-
-                    if (Globals.ValidEntry)
-                    {
-                        if (Globals.PlayerAnswer == firstNumber - secondNumber)
-                        {
-                            Console.WriteLine($"CORRECT !! {Globals.Response} IS CORRECT");
-                            Globals.correctAnswers++;
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine($"WRONG !! {Globals.Response} IS NOT CORRECT");
-                            Console.WriteLine();
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("INPUT A NUMBER !!");
-                    }
-
-                } while (!Globals.ValidEntry);
-            }
-
-            Helpers.GameStopWatch(false);
-
-            Helpers.AddToHistory(Globals.correctAnswers, GameType.Subtraction);
-            Console.WriteLine($"YOU ANSWERED {Globals.correctAnswers} out of {Globals.MaxGames} in {Globals.TimeTaken:F2}\nPRESS ANY BUTTON TO CONTINUE");
-            Console.ReadLine();
-            Console.Clear();
-        }
-        */
 
     }
 
