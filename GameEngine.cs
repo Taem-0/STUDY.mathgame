@@ -1,17 +1,10 @@
 ﻿using STUDY.mathgame.MODELS;
-
+//finished
 namespace STUDY.mathgame
 {
     internal class GameEngine
     {
-        internal enum MathOperation
-        {
-            Addition,
-            Subtraction,
-            Multiplication,
-            Division
-        }
-
+        
         internal void MathGame(string message, MODELS.GameType gameType)
         {
             string operatorSymbol = "";
@@ -73,7 +66,7 @@ namespace STUDY.mathgame
 
                 do
                 {
-                    Console.WriteLine($@"ANSWER THIS: {firstNumber} {operatorSymbol} {secondNumber} = ");
+                    Console.WriteLine($"ANSWER THIS: {firstNumber} {operatorSymbol} {secondNumber} = ");
 
                     Globals.ReadResult = Console.ReadLine();
                     if (Globals.ReadResult != null)
@@ -117,4 +110,3 @@ namespace STUDY.mathgame
     }
 
 }
-        

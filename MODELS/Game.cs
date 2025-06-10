@@ -1,6 +1,6 @@
 ﻿
 namespace STUDY.mathgame.MODELS;
-
+//finished
 internal class Game 
 {
     public DateTime Date {  get; set; }

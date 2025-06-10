@@ -1,6 +1,6 @@
 ﻿
 using STUDY.mathgame.MODELS;
-
+//finished
 namespace STUDY.mathgame
 {
     internal class Helpers
@@ -30,7 +30,7 @@ namespace STUDY.mathgame
                     Console.ReadLine();
                     Console.Clear();
                     Globals.MaxGames = 5;
-                    Globals.NumberRange = 9;
+                    Globals.NumberRange = 19;
                     break;
                 case "2":
                     Console.WriteLine("YOU CHOSE MEDIUM !!");

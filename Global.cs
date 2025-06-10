@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using STUDY.mathgame.MODELS;
-
+//finished
 public static class Globals
 {
     public static int MaxGames = 0;
