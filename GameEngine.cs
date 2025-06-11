@@ -11,7 +11,7 @@ namespace STUDY.mathgame
             GameType currentGameType = new GameType();
             Globals.correctAnswers = 0;
             Random randomGame = new Random();
-
+            string? readResult;
             Helpers.gameDifficulty();
             Console.WriteLine(message);
 
@@ -68,10 +68,10 @@ namespace STUDY.mathgame
                 {
                     Console.WriteLine($"ANSWER THIS: {firstNumber} {operatorSymbol} {secondNumber} = ");
 
-                    Globals.ReadResult = Console.ReadLine();
-                    if (Globals.ReadResult != null)
+                    readResult = Console.ReadLine();
+                    if (readResult != null)
                     {
-                        Globals.Response = Globals.ReadResult.ToLower().Trim();
+                        Globals.Response = readResult.ToLower().Trim();
                         Globals.ValidEntry = int.TryParse(Globals.Response, out Globals.PlayerAnswer);
                     }
 

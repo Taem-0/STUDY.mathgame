@@ -5,7 +5,6 @@ public static class Globals
 {
     public static int MaxGames = 0;
     public static int NumberRange = 0;
-    public static string? ReadResult;
     public static double TimeTaken = 0;
     public static bool ValidEntry = false;
     public static int PlayerAnswer = 0;

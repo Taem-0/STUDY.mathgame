@@ -20,11 +20,11 @@ namespace STUDY.mathgame
                 Console.WriteLine("H. HISTORY");
                 Console.WriteLine("Q. QUIT");
 
-                Globals.ReadResult = Console.ReadLine();
+                string? readResult = Console.ReadLine();
 
-                if (Globals.ReadResult != null)
+                if (readResult != null)
                 {
-                    menuSelect = Globals.ReadResult.ToLower().Trim();
+                    menuSelect = readResult.ToLower().Trim();
                 }
 
                 Console.Clear();

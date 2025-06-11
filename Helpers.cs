@@ -14,11 +14,11 @@ namespace STUDY.mathgame
             Console.WriteLine("TWO, MEDIUM");
             Console.WriteLine("THREE, HARD");
 
-            Globals.ReadResult = Console.ReadLine();
+            string? readResult = Console.ReadLine();
 
-            if (Globals.ReadResult != null)
+            if (readResult != null)
             {
-                difficulty = Globals.ReadResult.ToLower().Trim();
+                difficulty = readResult.ToLower().Trim();
             }
 
             Console.Clear();
